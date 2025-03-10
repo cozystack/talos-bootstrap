@@ -3,7 +3,7 @@
 An interactive script for bootstrapping Kubernetes clusters on Talos OS.
 
 *Example: bootstrap full-feature Kubernetes cluster in 5 minutes*:
-[![screencast](https://raw.githubusercontent.com/aenix-io/talos-bootstrap/2cc7b82065747e373cd914c87c8cd5c6582c5c6c/images/627123.gif)](https://asciinema.org/a/gwK85Tdr577GsxjXWo7otPFjv)
+[![screencast](https://raw.githubusercontent.com/cozystack/talos-bootstrap/2cc7b82065747e373cd914c87c8cd5c6582c5c6c/images/627123.gif)](https://asciinema.org/a/gwK85Tdr577GsxjXWo7otPFjv)
 
 # Installation
 
@@ -15,7 +15,7 @@ Install dependencies:
 Install talos-bootstrap:
 
 ```
-curl -LO https://github.com/aenix-io/talos-bootstrap/raw/master/talos-bootstrap
+curl -LO https://github.com/cozystack/talos-bootstrap/raw/master/talos-bootstrap
 chmod +x ./talos-bootstrap
 sudo mv ./talos-bootstrap /usr/local/bin/talos-bootstrap
 ```
@@ -61,7 +61,7 @@ Read the [Configuration Patches](https://www.talos.dev/latest/talos-guides/confi
 
 Looking for enhanced, non-interactive version of talos-bootstrap?
 
-Take a look at [Talm](https://github.com/aenix-io/talm) project.
+Take a look at [Talm](https://github.com/cozystack/talm) project.
 
 # Copyright
 
