@@ -341,6 +341,11 @@ fi
 default_k8s_endpoint="${CONFIG_KUBERNETES_API_ENDPOINT:-https://${vip_address:-${address}}:6443}"
 k8s_endpoint=$(dialog --keep-tite --title talos-bootstrap --inputbox "Enter Kubernetes endpoint:" 8 40 "${default_k8s_endpoint}" 3>&1 1>&2 2>&3) || exit 0
 
+# Workaround - no disk found - assume sda
+if ["" = $disk]; then
+  disk="sda"
+fi
+
 # Generating config patch...
 machine_config=$(cat <<EOT
 machine:
