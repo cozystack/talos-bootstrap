@@ -19,7 +19,6 @@ show_help() {
     printf "\t%s\t%s\n" "dashboard" "Open dashboard for a node."
     printf "\nOPTIONS:\n"
     printf "\t%s <%s>\t%s\n" "-n, --node" "address" "Node address"
-    exit 1
 }
 
 node=
@@ -61,6 +60,7 @@ case "$OP" in
     ;;
   *)
     show_help
+    exit 1
     ;;
 esac
 
