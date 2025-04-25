@@ -7,11 +7,29 @@
 # - https://google.github.io/styleguide/shell.xml
 #
 
+show_help() {
+    printf "USAGE:\n\t%s\n" "talos-bootstrap ACTION [OPTIONS]"
+    printf "\nACTIONS:\n"
+    printf "\t%s\t\t%s\n" "help" "Show this help message."
+    printf "\t%s\t\t%s\n" "install" "Setup a node for a new or existing cluster."
+    printf "\t%s\t\t%s\n" "upgrade" "Upgrade a node in an existing cluster."
+    printf "\t%s\t\t%s\n" "reset" "Reset and remove a node from an existing cluster."
+    printf "\t%s\t\t%s\n" "reboot" "Reboot a node."
+    printf "\t%s\t%s\n" "shutdown" "Shutdown a node."
+    printf "\t%s\t%s\n" "dashboard" "Open dashboard for a node."
+    printf "\nOPTIONS:\n"
+    printf "\t%s <%s>\t%s\n" "-n, --node" "address" "Node address"
+}
+
 node=
 OP=
 while [ $# -gt 0 ]; do
   key="$1"
   case $key in
+  -h|--help)
+    show_help
+    exit 0
+    ;;
   -n | --node)
     node="$2"
     shift
@@ -41,17 +59,7 @@ case "$OP" in
     OPTS="--talosconfig=talosconfig"
     ;;
   *)
-    printf "USAGE:\n\t%s\n" "talos-bootstrap ACTION [OPTIONS]"
-    printf "\nACTIONS:\n"
-    printf "\t%s\t\t%s\n" "help" "Show this help message."
-    printf "\t%s\t\t%s\n" "install" "Setup a node for a new or existing cluster."
-    printf "\t%s\t\t%s\n" "upgrade" "Upgrade a node in an existing cluster."
-    printf "\t%s\t\t%s\n" "reset" "Reset and remove a node from an existing cluster."
-    printf "\t%s\t\t%s\n" "reboot" "Reboot a node."
-    printf "\t%s\t%s\n" "shutdown" "Shutdown a node."
-    printf "\t%s\t%s\n" "dashboard" "Open dashboard for a node."
-    printf "\nOPTIONS:\n"
-    printf "\t%s <%s>\t%s\n" "-n, --node" "address" "Node address"
+    show_help
     exit 1
     ;;
 esac
