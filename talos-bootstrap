@@ -152,7 +152,7 @@ else
       manufacturer=$(talosctl -e "${node}" -n "${node}" get cpu ${OPTS} -o jsonpath='{.spec.manufacturer}' | head -n1)
       cpu=$(talosctl -e "${node}" -n "${node}" get cpu ${OPTS} -o jsonpath='{.spec.threadCount}' | awk '{sum+=$1;} END{print sum "-core";}')
       ram=$(talosctl -e "${node}" -n "${node}" get ram -o json ${OPTS} | awk '/"sizeMiB":/ {sub(",", ""); sum+=$2} END{print sum/1024 "GB"}')
-      disks=$(talosctl -e "${node}" -n "${node}" get disks ${OPTS} | awk 'sub(/^.*Disk +/, "", $0) {print $0}' | awk '$1 !~ "^(zd|drbd|loop|sr)" {print $1 ":" $3$4}' | awk '$1=$1' RS="," OFS=",")
+      disks=$(talosctl -e "${node}" -n "${node}" get disks ${OPTS} | awk 'sub(/^.*runtime +Disk +/, "", $0) {print $0}' | awk '$1 !~ "^(zd|drbd|loop|sr)" {print $1 ":" $3$4}' | awk '$1=$1' RS="," OFS=",")
       echo "\"${name}\"" "\"${mac}, ${cpu} ${manufacturer:-CPU}, RAM: ${ram}, Disks: [${disks}]\"" >> "${node_list_file}"
     done
 
